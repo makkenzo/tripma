@@ -1,6 +1,7 @@
 {
     "name": "tripma",
     "version": "0.1.0",
+    "description": "Tripma is a service for searching flights, hotels. It is a PET project for learning Next.js, TailwindCSS, Prisma, Jotai and other technologies.",
     "private": true,
     "type": "module",
     "scripts": {
