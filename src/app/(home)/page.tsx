@@ -5,6 +5,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { isAlertClosedAtom } from "@/jotai/store";
 import { useAtom } from "jotai";
+import { DevTools } from "jotai-devtools";
 import { X } from "lucide-react";
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
 
     return (
         <>
+            <DevTools />
             {!isAlertClosed ? (
                 <Alert className="bg-primary-global">
                     <AlertDescription className=" flex justify-between items-center w-full min-w-full text-white">
