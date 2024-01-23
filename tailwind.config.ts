@@ -12,9 +12,11 @@ const config = {
     theme: {
         container: {
             center: true,
-            padding: "2rem",
             screens: {
-                "2xl": "1400px",
+                sm: "840px",
+                md: "968px",
+                lg: "1224px",
+                xl: "1600px",
             },
         },
         extend: {
@@ -25,9 +27,10 @@ const config = {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 primary: {
-                    DEFAULT: "hsl(var(--primary))",
+                    DEFAULT: "#605DEC",
                     foreground: "hsl(var(--primary-foreground))",
                     hover: "hsl(var(--primary-hover))",
+                    global: "#605DEC",
                 },
                 secondary: {
                     DEFAULT: "hsl(var(--secondary))",
