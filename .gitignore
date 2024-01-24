@@ -1,42 +1,37 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Node Modules
 /node_modules
 /.pnp
 .pnp.js
 
-# testing
+# Output of 'npm pack'
 /coverage
 
-# database
+# Prisma
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
 
-# next.js
+# Next.js
 /.next/
 /out/
 next-env.d.ts
-
-# production
 /build
 
-# misc
+# DS Store Files and other Mac specific files
 .DS_Store
 *.pem
 
-# debug
+# Debug Logs and others from npm and yarn
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-# do not commit any .env files to git, except for the .env.example file. https://create.t3.gg/en/usage/env-variables#using-environment-variables
+# Env files
 .env
 .env*.local
 
-# vercel
+# Vercel Files
 .vercel
 
-# typescript
+# TS Build Files and others from tsc and babel etc
 *.tsbuildinfo

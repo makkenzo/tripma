@@ -7,6 +7,7 @@ import { isAlertClosedAtom } from "@/jotai/store";
 import { useAtom } from "jotai";
 import { DevTools } from "jotai-devtools";
 import { X } from "lucide-react";
+import Hero from "./_components/hero";
 
 export default function HomePage() {
     const [isAlertClosed, setIsAlertClosed] = useAtom(isAlertClosedAtom);
@@ -39,6 +40,7 @@ export default function HomePage() {
             ) : null}
             <div className="container">
                 <Navbar />
+                <Hero />
             </div>
         </>
     );
