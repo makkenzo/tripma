@@ -24,6 +24,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
 import { addDays, format } from "date-fns";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface HeroProps {}
 
@@ -145,10 +147,19 @@ const Hero = ({}: HeroProps) => {
                                 className="w-auto p-0"
                                 align="start"
                             >
-                                <div className="flex justify-between items-center px-4 py-2 bg-gray-200">
+                                {/* <div className="flex justify-between items-center px-4 py-2 bg-gray-200">
                                     <Button>Round trip</Button>
                                     <Button>One way</Button>
-                                </div>
+                                </div> */}
+                                <RadioGroup defaultValue="round-trip">
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem
+                                            value="round-trip"
+                                            id="round-trip"
+                                        />
+                                        <Label htmlFor="" />
+                                    </div>
+                                </RadioGroup>
                                 <Calendar
                                     initialFocus
                                     mode="range"
