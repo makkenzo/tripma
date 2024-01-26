@@ -1,31 +1,32 @@
 "use client";
 
-import { PlaneTakeoff, PlaneLanding, CalendarIcon } from "lucide-react";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-    SelectGroup,
-} from "@/components/ui/select";
-import { airports } from "@/data/airports";
-import Image from "next/image";
-import { SelectIcon } from "@radix-ui/react-select";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { airports } from "@/data/airports";
+import { cn } from "@/lib/utils";
+import { SelectIcon } from "@radix-ui/react-select";
+import { addDays, format } from "date-fns";
+import { CalendarIcon, PlaneLanding, PlaneTakeoff } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
-import { addDays, format } from "date-fns";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 
 interface HeroProps {}
 
@@ -146,20 +147,41 @@ const Hero = ({}: HeroProps) => {
                             <PopoverContent
                                 className="w-auto p-0"
                                 align="start"
+                                sideOffset={-300}
+                                side="left"
                             >
-                                {/* <div className="flex justify-between items-center px-4 py-2 bg-gray-200">
-                                    <Button>Round trip</Button>
-                                    <Button>One way</Button>
-                                </div> */}
-                                <RadioGroup defaultValue="round-trip">
-                                    <div className="flex items-center space-x-2">
-                                        <RadioGroupItem
-                                            value="round-trip"
-                                            id="round-trip"
+                                <div className="flex justify-between px-4 py-2">
+                                    <RadioGroup defaultValue="round-trip">
+                                        <div className="flex items-center space-x-4 ">
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem
+                                                    value="round-trip"
+                                                    id="round-trip"
+                                                />
+                                                <Label htmlFor="round-trip">
+                                                    Round trip
+                                                </Label>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem
+                                                    value="one-way"
+                                                    id="one-way"
+                                                />
+                                                <Label htmlFor="one-way">
+                                                    One way
+                                                </Label>
+                                            </div>
+                                        </div>
+                                    </RadioGroup>
+                                    <div className="flex gap-x-2">
+                                        <Input
+                                            placeholder="Depart - Return"
+                                            className="w-[200px] ring-0 ring-offset-0 text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
+                                            readOnly
                                         />
-                                        <Label htmlFor="" />
+                                        <Button>Done</Button>
                                     </div>
-                                </RadioGroup>
+                                </div>
                                 <Calendar
                                     initialFocus
                                     mode="range"
