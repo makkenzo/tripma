@@ -11,10 +11,18 @@ import {
 } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
+import { PopoverClose } from "@radix-ui/react-popover";
+import { format, set } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { Dispatch, SetStateAction } from "react";
-import { DateRange } from "react-day-picker";
+import {
+    Dispatch,
+    ElementRef,
+    SetStateAction,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
+import { DateRange, SelectRangeEventHandler } from "react-day-picker";
 
 interface TripDatePickerProps {
     date: DateRange | undefined;
@@ -29,6 +37,28 @@ const TripDatePicker = ({
     setDate,
     modifier,
 }: TripDatePickerProps) => {
+    const inputRef = useRef<ElementRef<"input">>(null);
+
+    const [selectedTripType, setSelectedTripType] = useState<
+        "round-trip" | "one-way"
+    >("round-trip");
+
+    useEffect(() => {
+        if (inputRef.current && date?.from) {
+            const formattedDate = date.to
+                ? `${format(date.from, "LLL dd, y")} - ${format(date.to, "LLL dd, y")}`
+                : format(date.from, "LLL dd, y");
+
+            inputRef.current.value = formattedDate;
+        }
+    }, [date]);
+
+    const onChange = () => {
+        setSelectedTripType((prev) =>
+            prev === "round-trip" ? "one-way" : "round-trip",
+        );
+    };
+
     return (
         <div className="grid gap-2">
             <Popover>
@@ -57,13 +87,16 @@ const TripDatePicker = ({
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent
-                    className="w-auto p-0"
+                    className="w-[600px] p-0"
                     align="start"
                     sideOffset={-300}
                     side="left"
                 >
                     <div className="flex justify-between px-4 py-2">
-                        <RadioGroup defaultValue="round-trip">
+                        <RadioGroup
+                            defaultValue="round-trip"
+                            onValueChange={onChange}
+                        >
                             <div className="flex items-center space-x-4 ">
                                 <div className="flex items-center space-x-2">
                                     <RadioGroupItem
@@ -84,12 +117,18 @@ const TripDatePicker = ({
                             </div>
                         </RadioGroup>
                         <div className="flex gap-x-2">
-                            <Input
-                                placeholder="Depart - Return"
-                                className="w-[200px] ring-0 ring-offset-0 text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
-                                readOnly
-                            />
-                            <Button>Done</Button>
+                            <div className="relative flex items-center">
+                                <CalendarIcon className="mr-2 h-5 w-5 text-black/40 absolute left-3" />
+                                <Input
+                                    placeholder="Depart - Return"
+                                    className="w-[270px] ring-0 ring-offset-0 text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 pl-10"
+                                    readOnly
+                                    ref={inputRef}
+                                />
+                            </div>
+                            <PopoverClose>
+                                <Button>Done</Button>
+                            </PopoverClose>
                         </div>
                     </div>
                     <Calendar
