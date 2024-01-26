@@ -38,7 +38,7 @@ const Hero = ({}: HeroProps) => {
             />
             <div className="flex flex-col justify-between h-[30rem]">
                 <div className="bg-gradient-to-r from-blue-400 to-violet-500 text-transparent bg-clip-text font-bold">
-                    <h1 className="mx-auto text-[6rem] text-center leading-[5rem] my-32">
+                    <h1 className="mx-auto text-[7rem] text-center leading-[6rem] my-32">
                         It's more than <br /> just a trip
                     </h1>
                 </div>
