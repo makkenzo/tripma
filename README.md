@@ -24,7 +24,23 @@ cd tripma
 npm i
 ```
 
-<p>4. Run in dev mode</p>
+<p>4. Set local variables in .env </p>
+
+> (See example in */.env.example*)
+
+```.env
+DATABASE_URL="postgresql://..."
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+```
+
+<p>5. Run in dev mode</p>
 
 ```
 npm run dev
