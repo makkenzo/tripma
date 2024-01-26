@@ -13,10 +13,10 @@ const config = {
         container: {
             center: true,
             screens: {
-                sm: "840px",
-                md: "968px",
-                lg: "1224px",
-                xl: "1600px",
+                sm: "1040px",
+                md: "1168px",
+                lg: "1424px",
+                xl: "1800px",
             },
         },
         extend: {

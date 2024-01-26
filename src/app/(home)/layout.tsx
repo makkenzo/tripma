@@ -1,12 +1,7 @@
 import "@/styles/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { Nunito_Sans } from "next/font/google";
 
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-sans",
-});
+const font = Nunito_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata = {
     title: "Tripma",
@@ -20,12 +15,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ClerkProvider>
-            <html lang="en">
-                <body className={`font-sans ${inter.variable}`}>
-                    {children}
-                </body>
-            </html>
-        </ClerkProvider>
+        <html lang="en">
+            <body className={`${font.className}`}>{children}</body>
+        </html>
     );
 }
