@@ -3,4 +3,11 @@ interface Iata {
     name: string | null;
 }
 
-export { type Iata };
+interface IAirport {
+    iata: string;
+    name: string;
+    city: string;
+    country: string;
+}
+
+export { type Iata, type IAirport };

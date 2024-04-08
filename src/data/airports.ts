@@ -1,4 +1,6 @@
-export const airports = [
+import { IAirport } from "@/types";
+
+export const airports: IAirport[] = [
     {
         iata: "ALA",
         name: "Almaty International Airport",

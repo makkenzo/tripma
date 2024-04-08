@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
+import { ruRU } from "@clerk/localizations";
 
 export const metadata = {
     title: "Next.js",
@@ -18,7 +19,7 @@ export default function AuthLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ClerkProvider>
+        <ClerkProvider localization={ruRU}>
             <html lang="en">
                 <body className={`${inter.className}`}>{children}</body>
             </html>
