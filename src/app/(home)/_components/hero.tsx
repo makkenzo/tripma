@@ -1,34 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { airports } from "@/data/airports";
-import { cn } from "@/lib/utils";
+import { Iata } from "@/types";
 import { addDays, format } from "date-fns";
-import { CalendarIcon, PlaneLanding, PlaneTakeoff } from "lucide-react";
+import { PlaneLanding, PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
 import AirportSelect from "./airport-select";
-import TripDatePicker from "./trip-date-picker";
 import PeopleSelect from "./people-select";
+import TripDatePicker from "./trip-date-picker";
+import { Button } from "@/components/ui/button";
 
-interface HeroProps {}
-
-interface Iata {
-    iata: string;
-    name: string | null;
-}
-
-const Hero = ({}: HeroProps) => {
+const Hero = () => {
     const iataAndNameValues: Iata[] = airports.map((airport) => ({
         iata: airport.iata,
         name: airport.name,
@@ -82,6 +66,7 @@ const Hero = ({}: HeroProps) => {
                         modifier={disabledDateModifier}
                     />
                     <PeopleSelect />
+                    <Button className="rounded-none border-none">Search</Button>
                 </div>
             </div>
         </div>
