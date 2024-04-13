@@ -10,6 +10,7 @@ import { X } from "lucide-react";
 import FlightDeals from "./_components/flight-deals";
 import Hero from "./_components/hero";
 import PlacesToStay from "./_components/places-to-stay";
+import Testimonials from "./_components/testimonials";
 
 export default function HomePage() {
     const [isAlertClosed, setIsAlertClosed] = useAtom(isAlertClosedAtom);
@@ -76,6 +77,7 @@ export default function HomePage() {
                 <Hero />
                 <FlightDeals />
                 <PlacesToStay />
+                <Testimonials />
             </div>
         </>
     );

@@ -27,4 +27,15 @@ interface IPlaceCard {
     image: string;
 }
 
-export { type Iata, type IAirport, type IDeal, type IPlaceCard };
+interface IReview {
+    id: string;
+    name: string;
+    image: string;
+    city: string;
+    country: string;
+    date: Date;
+    stars: number;
+    review: string;
+}
+
+export { type Iata, type IAirport, type IDeal, type IPlaceCard, type IReview };
