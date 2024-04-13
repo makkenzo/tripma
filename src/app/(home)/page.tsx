@@ -7,6 +7,7 @@ import { isAlertClosedAtom, isCookieAcceptedAtom } from "@/jotai/store";
 import { useAtom } from "jotai";
 import { DevTools } from "jotai-devtools";
 import { X } from "lucide-react";
+import FlightDeals from "./_components/flight-deals";
 import Hero from "./_components/hero";
 
 export default function HomePage() {
@@ -46,7 +47,7 @@ export default function HomePage() {
             ) : null}
             <div className="container">
                 {!isCookieAccepted ? (
-                    <Alert className="fixed left-4 bottom-4 w-72 bg-purpleDark_60 rounded-md z-50 border-2 border-purpleBlue text-purpleBlue font-semibold">
+                    <Alert className="fixed left-4 bottom-4 w-72 bg-[#F6F6FE] rounded-md z-50 border-2 border-purpleBlue text-purpleBlue font-semibold">
                         <AlertDescription className="flex items-start flex-col gap-2">
                             <div className="flex">
                                 <p className="text-lg">
@@ -72,6 +73,7 @@ export default function HomePage() {
                 ) : null}
                 <Navbar />
                 <Hero />
+                <FlightDeals />
             </div>
         </>
     );

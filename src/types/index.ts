@@ -10,4 +10,13 @@ interface IAirport {
     country: string;
 }
 
-export { type Iata, type IAirport };
+interface IDeal {
+    id: string;
+    name: string;
+    city: string;
+    description: string;
+    image: string;
+    price: number;
+}
+
+export { type Iata, type IAirport, type IDeal };
