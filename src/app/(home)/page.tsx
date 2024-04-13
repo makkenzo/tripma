@@ -18,6 +18,10 @@ export default function HomePage() {
         setIsAlertClosed(true);
     };
 
+    const handleCloseCookiesAlert = () => {
+        setIsCookieAccepted(true);
+    };
+
     return (
         <>
             {/* <DevTools /> */}
@@ -42,18 +46,25 @@ export default function HomePage() {
             ) : null}
             <div className="container">
                 {!isCookieAccepted ? (
-                    <Alert className="absolute left-4 bottom-4 w-72 bg-purple-blue">
-                        <AlertDescription className="flex items-start">
-                            <p className="text-lg">
-                                By using our site, you agree to eat our cookies.
-                            </p>
-                            <Button
-                                size="sm"
-                                variant="ghost"
-                                onClick={handleCloseAlert}
-                            >
-                                <X />
-                            </Button>
+                    <Alert className="fixed left-4 bottom-4 w-72 bg-purpleDark_60 rounded-md z-50 border-2 border-purpleBlue text-purpleBlue font-semibold">
+                        <AlertDescription className="flex items-start flex-col gap-2">
+                            <div className="flex">
+                                <p className="text-lg">
+                                    By using our site, you agree to eat our
+                                    cookies.
+                                </p>
+                                <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    onClick={handleCloseCookiesAlert}
+                                >
+                                    <X />
+                                </Button>
+                            </div>
+                            <div className="flex">
+                                <Button>Accept cookies</Button>
+                                <Button variant="link">Go to settings</Button>
+                            </div>
                         </AlertDescription>
                     </Alert>
                 ) : null}
