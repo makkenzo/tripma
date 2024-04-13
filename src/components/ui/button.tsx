@@ -23,12 +23,14 @@ const buttonVariants = cva(
                 link: "text-primary underline-offset-4 hover:underline",
                 increment:
                     "text-purpleBlue bg-[#FAFAFA] active:bg-[#edebeb] hover:bg-[#f2f2f2]",
+                store: "text-white bg-black",
             },
             size: {
                 default: "h-10 px-4 py-2",
                 sm: "h-9 rounded-md px-3",
                 lg: "h-11 rounded-md px-5",
                 icon: "h-10 w-10",
+                store: "h-14 w-52 px-4 py-1",
             },
         },
         defaultVariants: {
