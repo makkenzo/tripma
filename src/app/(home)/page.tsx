@@ -62,7 +62,9 @@ export default function HomePage() {
                                 </Button>
                             </div>
                             <div className="flex">
-                                <Button>Accept cookies</Button>
+                                <Button onClick={handleCloseCookiesAlert}>
+                                    Accept cookies
+                                </Button>
                                 <Button variant="link">Go to settings</Button>
                             </div>
                         </AlertDescription>

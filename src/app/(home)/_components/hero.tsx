@@ -19,6 +19,7 @@ import { useState } from "react";
 import { DateRange } from "react-day-picker";
 import AirportSelect from "./airport-select";
 import TripDatePicker from "./trip-date-picker";
+import PeopleSelect from "./people-select";
 
 interface HeroProps {}
 
@@ -80,6 +81,7 @@ const Hero = ({}: HeroProps) => {
                         setDate={setDate}
                         modifier={disabledDateModifier}
                     />
+                    <PeopleSelect />
                 </div>
             </div>
         </div>

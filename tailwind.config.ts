@@ -69,7 +69,7 @@ const config = {
                 tripmaBlue: "hsl(var(--blue))",
                 tripmaTurquoise: "hsl(var(--turquoise))",
                 tripmaRed: "hsl(var(--red))",
-                tripmaGrey: "hsl(var(--grey))",
+                tripmaGrey: "hsla(var(--grey))",
                 redLight: "hsl(var(--red-light))",
                 purpleWhiteLight: "hsl(var(--purple-white-light))",
                 deepGreen: "hsl(var(--deep-green))",
