@@ -19,4 +19,12 @@ interface IDeal {
     price: number;
 }
 
-export { type Iata, type IAirport, type IDeal };
+interface IPlaceCard {
+    id: string;
+    title: string;
+    country: string;
+    description: string;
+    image: string;
+}
+
+export { type Iata, type IAirport, type IDeal, type IPlaceCard };

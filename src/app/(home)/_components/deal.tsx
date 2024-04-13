@@ -20,7 +20,7 @@ const Deal = ({ deal, fullSize = false }: DealProps) => {
             />
 
             <div className="py-4 px-6">
-                <div className="flex justify-between text-[#6E7491]">
+                <div className="flex justify-between text-[#6E7491] text-lg">
                     <p>
                         {deal.name},{" "}
                         <span className="text-[#605DEC]">{deal.city}</span>

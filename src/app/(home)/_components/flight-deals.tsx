@@ -14,16 +14,13 @@ const FlightDeals = () => {
     }, []);
 
     return (
-        <>
-            <div className="flex justify-between">
-                <h1 className="text-[#6E7491] font-semibold">
+        <div className="my-16">
+            <div className="flex justify-between mb-4">
+                <h1 className="text-[#6E7491] font-semibold text-xl">
                     Find your next adventure with these{" "}
                     <span className="text-purpleBlue">flight deals</span>
                 </h1>
-                <Button
-                    variant="link"
-                    className="text-[#6E7491] text-lg flex gap-2 items-center"
-                >
+                <Button variant="link" className="text-[#6E7491] text-xl">
                     All
                 </Button>
             </div>
@@ -39,7 +36,7 @@ const FlightDeals = () => {
                     </>
                 )}
             </div>
-        </>
+        </div>
     );
 };
 

@@ -9,6 +9,7 @@ import { DevTools } from "jotai-devtools";
 import { X } from "lucide-react";
 import FlightDeals from "./_components/flight-deals";
 import Hero from "./_components/hero";
+import PlacesToStay from "./_components/places-to-stay";
 
 export default function HomePage() {
     const [isAlertClosed, setIsAlertClosed] = useAtom(isAlertClosedAtom);
@@ -45,7 +46,7 @@ export default function HomePage() {
                     </AlertDescription>
                 </Alert>
             ) : null}
-            <div className="container">
+            <div className="max-w-[1360px] w-full mx-auto">
                 {!isCookieAccepted ? (
                     <Alert className="fixed left-4 bottom-4 w-72 bg-[#F6F6FE] rounded-md z-50 border-2 border-purpleBlue text-purpleBlue font-semibold">
                         <AlertDescription className="flex items-start flex-col gap-2">
@@ -74,6 +75,7 @@ export default function HomePage() {
                 <Navbar />
                 <Hero />
                 <FlightDeals />
+                <PlacesToStay />
             </div>
         </>
     );

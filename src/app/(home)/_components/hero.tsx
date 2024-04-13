@@ -32,7 +32,7 @@ const Hero = () => {
     const disabledDateModifier = { before: today };
 
     return (
-        <div className="relative h-[850px]">
+        <div className="relative h-[800px]">
             <Image
                 src="/images/world-map.png"
                 alt="hero-bg"
