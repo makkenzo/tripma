@@ -38,6 +38,19 @@
         --ring: 0 0% 3.9%;
 
         --radius: 0.5rem;
+
+        --purple-dark: #1513a0;
+        --purple-light: #bcbaf7;
+        --purple-blue: #605dec;
+        --purple-extra-light: #e9e8fc;
+        --purple-white: #f6f6fe;
+        --blue: #407aea;
+        --turquoise: #5cd6c0;
+        --red: #eb5757;
+        --grey: rgba(82, 82, 122, 0.2);
+        --red-light: #fdefef;
+        --purple-white-light: #fafafe;
+        --deep-green: #007b65;
     }
 
     .dark {
@@ -78,4 +91,8 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+* {
+    outline: 1px red solid;
 }
