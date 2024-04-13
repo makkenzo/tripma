@@ -11,6 +11,7 @@ import FlightDeals from "./_components/flight-deals";
 import Hero from "./_components/hero";
 import PlacesToStay from "./_components/places-to-stay";
 import Testimonials from "./_components/testimonials";
+import Footer from "@/components/footer";
 
 export default function HomePage() {
     const [isAlertClosed, setIsAlertClosed] = useAtom(isAlertClosedAtom);
@@ -79,6 +80,8 @@ export default function HomePage() {
                 <PlacesToStay />
                 <Testimonials />
             </div>
+            <div className="my-40"></div>
+            <Footer />
         </>
     );
 }

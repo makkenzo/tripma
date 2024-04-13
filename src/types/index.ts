@@ -38,4 +38,19 @@ interface IReview {
     review: string;
 }
 
-export { type Iata, type IAirport, type IDeal, type IPlaceCard, type IReview };
+interface ILink {
+    parent: string;
+    childs: {
+        label: string;
+        value: string;
+    }[];
+}
+
+export {
+    type Iata,
+    type IAirport,
+    type IDeal,
+    type IPlaceCard,
+    type IReview,
+    type ILink,
+};
