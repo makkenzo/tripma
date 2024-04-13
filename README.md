@@ -21,7 +21,7 @@ cd tripma
 <p>3. Install dependencies</p>
 
 ```
-npm i
+pnpm i
 ```
 
 <p>4. Set local variables in .env </p>
@@ -43,7 +43,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 <p>5. Run in dev mode</p>
 
 ```
-npm run dev
+pnpm dev
 ```
 
 <h2>💻 Built with</h2>
