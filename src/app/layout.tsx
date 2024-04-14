@@ -1,5 +1,4 @@
 // Import your globals here
-import Navbar from "@/components/nav-bar";
 import "@/styles/globals.css";
 
 import { Inter } from "next/font/google";
@@ -9,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-    title: "Tripma | Oops.. not found",
-    description: "wrong url :\\",
+    title: "Tripma",
+    description: "Tripma",
 };
 
 export default function RootLayout({
@@ -21,10 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="max-w-[1360px] w-full mx-auto">
-                    <Navbar />
-                    {children}
-                </div>
+                <div>{children}</div>
             </body>
         </html>
     );
