@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-    title: "New page title here",
-    description: "Sample description",
+    title: "Tripma | Oops.. not found",
+    description: "wrong url :\\",
 };
 
 export default function RootLayout({
