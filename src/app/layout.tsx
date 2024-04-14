@@ -1,5 +1,6 @@
 // Import your globals here
 import "@/styles/globals.css";
+import { Provider } from "jotai";
 
 import { Inter } from "next/font/google";
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div>{children}</div>
+                <Provider>
+                    <div>{children}</div>
+                </Provider>
             </body>
         </html>
     );

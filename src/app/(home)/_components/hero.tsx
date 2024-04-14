@@ -5,12 +5,14 @@ import { Iata } from "@/types";
 import { addDays, format } from "date-fns";
 import { PlaneLanding, PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 import AirportSelect from "./airport-select";
 import PeopleSelect from "./people-select";
 import TripDatePicker from "./trip-date-picker";
 import { Button } from "@/components/ui/button";
+import { useAtom } from "jotai";
+import { fromAtom, toAtom } from "@/jotai/store";
 
 const Hero = () => {
     const iataAndNameValues: Iata[] = airports.map((airport) => ({
@@ -31,6 +33,29 @@ const Hero = () => {
 
     const disabledDateModifier = { before: today };
 
+    const [from, setFrom] = useAtom(fromAtom);
+    const [to, setTo] = useAtom(toAtom);
+
+    const handleSelectFrom = (airport: string) => {
+        const found = iataAndNameValues.find(
+            (x) => x.iata.toLowerCase() === airport,
+        );
+
+        console.log("from", found);
+
+        setFrom(found!);
+    };
+
+    const handleSelectTo = (airport: string) => {
+        const found = iataAndNameValues.find(
+            (x) => x.iata.toLowerCase() === airport,
+        );
+
+        console.log("to", found);
+
+        setTo(found!);
+    };
+
     return (
         <div className="relative h-[800px]">
             <Image
@@ -50,13 +75,15 @@ const Hero = () => {
                     <AirportSelect
                         data={iataAndNameValues}
                         placeholder="From where?"
-                        onSelect={() => {}}
+                        onSelect={handleSelectFrom}
+                        defaultValue={from.iata.toLowerCase()}
                         icon={PlaneTakeoff}
                     />
                     <AirportSelect
                         data={iataAndNameValues}
                         placeholder="Where to?"
-                        onSelect={() => {}}
+                        onSelect={handleSelectTo}
+                        defaultValue={to.iata.toLowerCase()}
                         icon={PlaneLanding}
                     />
                     <TripDatePicker

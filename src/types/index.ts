@@ -46,6 +46,21 @@ interface ILink {
     }[];
 }
 
+interface ISubmitData {
+    from: Iata;
+    to: Iata;
+    date: {
+        from: Date;
+        to: Date;
+    };
+    roundTrip: boolean;
+    passengers: {
+        adults: number;
+        minors: number;
+        total: number;
+    };
+}
+
 export {
     type Iata,
     type IAirport,
@@ -53,4 +68,5 @@ export {
     type IPlaceCard,
     type IReview,
     type ILink,
+    type ISubmitData,
 };

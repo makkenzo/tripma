@@ -29,7 +29,7 @@ const FlightDeals = () => {
                     <>
                         <div className="flex justify-between">
                             {data.slice(0, 3).map((deal) => (
-                                <Deal deal={deal} />
+                                <Deal key={deal.id} deal={deal} />
                             ))}
                         </div>
                         <Deal deal={data[3]!} fullSize />

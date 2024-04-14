@@ -50,6 +50,7 @@ const TripDatePicker = ({
                 : format(date.from, "LLL dd, y");
 
             inputRef.current.value = formattedDate;
+            console.log(date.from, date.to);
         }
     }, [date]);
 

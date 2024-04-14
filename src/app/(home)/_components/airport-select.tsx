@@ -12,12 +12,14 @@ import {
 import { type Iata } from "@/types";
 import { SelectIcon } from "@radix-ui/react-select";
 import { type LucideIcon, PlaneTakeoff } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface AirportSelectProps {
     data: Iata[];
     placeholder: string;
-    onSelect: () => void;
+    onSelect: (airport: string) => void;
     icon: LucideIcon;
+    defaultValue: string;
 }
 
 const AirportSelect = ({
@@ -25,9 +27,21 @@ const AirportSelect = ({
     placeholder,
     icon: Icon,
     onSelect,
+    defaultValue,
 }: AirportSelectProps) => {
+    const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
+
+    useEffect(() => {
+        setSelectedValue(defaultValue);
+    }, [defaultValue]);
+
+    const handleValueChange = (value: string) => {
+        setSelectedValue(value);
+        onSelect(value);
+    };
+
     return (
-        <Select>
+        <Select onValueChange={handleValueChange} value={selectedValue}>
             <SelectTrigger className="w-[280px]">
                 <div className="flex items-center gap-x-4">
                     <SelectIcon>

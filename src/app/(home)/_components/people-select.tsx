@@ -9,13 +9,18 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { User } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PeopleSelectProps {}
 
 const PeopleSelect = ({}: PeopleSelectProps) => {
     const [adults, setAdults] = useState(1);
     const [minors, setMinors] = useState(0);
+    const [totalPassengers, setTotalPassengers] = useState(0);
+
+    useEffect(() => {
+        setTotalPassengers(adults + minors);
+    }, [adults, minors]);
 
     return (
         <Popover>
@@ -28,7 +33,9 @@ const PeopleSelect = ({}: PeopleSelectProps) => {
                     )}
                 >
                     <User className="mr-2 h-5 w-5 text-black/40" />
-                    Passengers
+                    {totalPassengers !== 0
+                        ? `${totalPassengers} Passengers`
+                        : "Passengers"}
                 </Button>
             </PopoverTrigger>
             <PopoverContent>

@@ -28,7 +28,7 @@ export default function HomePage() {
 
     return (
         <>
-            {/* <DevTools /> */}
+            <DevTools />
             {!isAlertClosed ? (
                 <Alert className="bg-primary-global">
                     <AlertDescription className="flex justify-between items-center w-full min-w-full text-white">

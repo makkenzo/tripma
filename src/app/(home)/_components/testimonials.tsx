@@ -23,7 +23,9 @@ const Testimonials = ({}: TestimonialsProps) => {
             <div className="flex justify-between my-8">
                 {data &&
                     data.length > 0 &&
-                    data.map((review) => <Review review={review} />)}
+                    data.map((review) => (
+                        <Review key={review.id} review={review} />
+                    ))}
             </div>
         </div>
     );

@@ -30,7 +30,7 @@ const PlacesToStay = ({}: PlacesToStayProps) => {
             {data && data.length > 0 && (
                 <div className="flex justify-between">
                     {data.slice(0, 3).map((place) => (
-                        <PlaceCard place={place} />
+                        <PlaceCard key={place.id} place={place} />
                     ))}
                 </div>
             )}
