@@ -19,7 +19,7 @@ const Hero = () => {
                         It's more than <br /> just a trip
                     </h1>
                 </div>
-                <MainInputs />
+                <MainInputs className="shadow-[-1px_11px_38px_14px_#936E9122]" />
             </div>
         </div>
     );

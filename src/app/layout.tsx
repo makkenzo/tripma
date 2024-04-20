@@ -3,12 +3,10 @@ import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Provider } from "jotai";
 
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 
-const inter = Inter({
-    subsets: ["latin"],
-});
+const font = Poppins({ subsets: ["latin"], weight: ["100", "200"] });
 
 export const metadata = {
     title: "Tripma",
@@ -22,7 +20,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={font.className}>
                 <Provider>
                     <ClerkProvider>
                         {children}

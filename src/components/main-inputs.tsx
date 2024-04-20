@@ -15,6 +15,7 @@ import { DateRange } from "react-day-picker";
 import { toast } from "sonner";
 import Loader from "./loader";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 interface MainInputsProps {
     data?: {
@@ -27,9 +28,14 @@ interface MainInputsProps {
         total: string;
     } | null;
     disabled?: boolean;
+    className?: string;
 }
 
-const MainInputs = ({ data = null, disabled = false }: MainInputsProps) => {
+const MainInputs = ({
+    data = null,
+    disabled = false,
+    className = "",
+}: MainInputsProps) => {
     const [iataAndNameValues, setIataAndNameValues] = useState<Iata[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -126,7 +132,7 @@ const MainInputs = ({ data = null, disabled = false }: MainInputsProps) => {
     }
 
     return (
-        <div className="flex shadow-[-1px_11px_38px_14px_#936E9122]">
+        <div className={cn("flex", className)}>
             <AirportSelect
                 data={iataAndNameValues}
                 placeholder="From where?"
