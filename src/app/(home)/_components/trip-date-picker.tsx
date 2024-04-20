@@ -29,6 +29,7 @@ interface TripDatePickerProps {
     today: Date;
     setDate: Dispatch<SetStateAction<DateRange | undefined>>;
     modifier: { before: Date };
+    disabled?: boolean;
 }
 
 const TripDatePicker = ({
@@ -36,6 +37,7 @@ const TripDatePicker = ({
     today,
     setDate,
     modifier,
+    disabled = false,
 }: TripDatePickerProps) => {
     const inputRef = useRef<ElementRef<"input">>(null);
 
@@ -71,6 +73,7 @@ const TripDatePicker = ({
                             "w-[300px] justify-start text-left font-normal rounded-none",
                             !date && "text-muted-foreground",
                         )}
+                        disabled={disabled}
                     >
                         <CalendarIcon className="mr-2 h-5 w-5 text-black/40" />
                         {date?.from ? (

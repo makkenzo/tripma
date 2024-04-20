@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./logo";
 import { Button } from "./ui/button";
 import { UserButton, useUser } from "@clerk/nextjs";
+
 interface NavLinksProps {
     title: string;
     href: string;
@@ -46,7 +49,9 @@ const navLinks: NavLinksProps[] = [
 ];
 
 const Navbar = () => {
-    const { user } = useUser();
+    const { isSignedIn, user, isLoaded } = useUser();
+
+    if (!isLoaded) return null;
 
     return (
         <nav className="flex items-center justify-between">
@@ -54,7 +59,7 @@ const Navbar = () => {
             <ul className="flex my-4 items-center">
                 {navLinks.map((link) => {
                     if (
-                        user &&
+                        isSignedIn &&
                         (link.title === "Sign in" || link.title === "Sign up")
                     ) {
                         return null;
@@ -71,7 +76,7 @@ const Navbar = () => {
                     );
                 })}
 
-                {user && <UserButton afterSignOutUrl="/" />}
+                {isSignedIn && <UserButton afterSignOutUrl="/" />}
             </ul>
         </nav>
     );

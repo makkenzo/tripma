@@ -12,9 +12,15 @@ import { cn } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { User } from "lucide-react";
 
-interface PeopleSelectProps {}
+interface PeopleSelectProps {
+    customPassengers?: number | null;
+    disabled?: boolean;
+}
 
-const PeopleSelect = ({}: PeopleSelectProps) => {
+const PeopleSelect = ({
+    customPassengers = null,
+    disabled = false,
+}: PeopleSelectProps) => {
     const [passengers, setPassengers] = useAtom(passengersAtom);
 
     return (
@@ -26,11 +32,14 @@ const PeopleSelect = ({}: PeopleSelectProps) => {
                     className={cn(
                         "w-[200px] justify-start text-left font-normal rounded-none",
                     )}
+                    disabled={disabled}
                 >
                     <User className="mr-2 h-5 w-5 text-black/40" />
-                    {passengers.total !== 0
-                        ? `${passengers.total} Passengers`
-                        : "Passengers"}
+                    {customPassengers
+                        ? `${customPassengers} Passengers`
+                        : passengers.total !== 0
+                          ? `${passengers.total} Passengers`
+                          : "Passengers"}
                 </Button>
             </PopoverTrigger>
             <PopoverContent>

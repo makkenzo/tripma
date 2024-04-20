@@ -20,6 +20,7 @@ interface AirportSelectProps {
     onSelect: (airport: string) => void;
     icon: LucideIcon;
     defaultValue: string;
+    disabled?: boolean;
 }
 
 const AirportSelect = ({
@@ -28,6 +29,7 @@ const AirportSelect = ({
     icon: Icon,
     onSelect,
     defaultValue,
+    disabled = false,
 }: AirportSelectProps) => {
     const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
 
@@ -41,7 +43,11 @@ const AirportSelect = ({
     };
 
     return (
-        <Select onValueChange={handleValueChange} value={selectedValue}>
+        <Select
+            onValueChange={handleValueChange}
+            value={selectedValue}
+            disabled={disabled}
+        >
             <SelectTrigger className="w-[280px]">
                 <div className="flex items-center gap-x-4">
                     <SelectIcon>
