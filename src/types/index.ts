@@ -1,3 +1,5 @@
+import { RESET } from "jotai/utils";
+
 interface Iata {
     iata: string;
     name: string | null;
@@ -61,6 +63,19 @@ interface ISubmitData {
     };
 }
 
+interface IPassengers {
+    adults: number;
+    minors: number;
+    total: number;
+    [key: string]: number;
+}
+
+type SetAtom<Args extends any[], Result> = (...args: Args) => Result;
+type SetStateActionWithReset<Value> =
+    | Value
+    | typeof RESET
+    | ((prev: Value) => Value | typeof RESET);
+
 export {
     type Iata,
     type IAirport,
@@ -69,4 +84,7 @@ export {
     type IReview,
     type ILink,
     type ISubmitData,
+    type IPassengers,
+    type SetAtom,
+    type SetStateActionWithReset,
 };

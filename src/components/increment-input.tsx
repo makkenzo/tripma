@@ -1,26 +1,39 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
+import { IPassengers, SetAtom, SetStateActionWithReset } from "@/types";
 import { Minus, Plus } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface IncrementInputProps {
     label: string;
-    state: number;
-    setState: Dispatch<SetStateAction<number>>;
+    state: IPassengers;
+    setState: SetAtom<[SetStateActionWithReset<IPassengers>], void>;
+    stateKey: string;
 }
 
-const IncrementInput = ({ label, state, setState }: IncrementInputProps) => {
+const IncrementInput = ({
+    label,
+    state,
+    setState,
+    stateKey,
+}: IncrementInputProps) => {
     const handleIncrement = () => {
-        if (state < 99) {
-            setState(state + 1);
+        if (state[stateKey]! < 99) {
+            setState((prevState) => ({
+                ...prevState,
+                [stateKey]: prevState[stateKey]! + 1,
+                total: prevState.adults + prevState.minors + 1,
+            }));
         }
     };
 
     const handleDecrement = () => {
-        if (state > 0) {
-            setState(state - 1);
+        if (state[stateKey]! > 0) {
+            setState((prevState) => ({
+                ...prevState,
+                [stateKey]: prevState[stateKey]! - 1,
+                total: prevState.adults + prevState.minors - 1,
+            }));
         }
     };
 
@@ -33,7 +46,7 @@ const IncrementInput = ({ label, state, setState }: IncrementInputProps) => {
                     <Minus size={18} />
                 </Button>
                 <p className="text-[#6E7491] text-lg w-5 text-center">
-                    {state}
+                    {state[stateKey]}
                 </p>
                 <Button variant="increment" size="sm" onClick={handleIncrement}>
                     <Plus size={18} />

@@ -7,20 +7,15 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { passengersAtom } from "@/jotai/store";
 import { cn } from "@/lib/utils";
+import { useAtom } from "jotai";
 import { User } from "lucide-react";
-import { useEffect, useState } from "react";
 
 interface PeopleSelectProps {}
 
 const PeopleSelect = ({}: PeopleSelectProps) => {
-    const [adults, setAdults] = useState(1);
-    const [minors, setMinors] = useState(0);
-    const [totalPassengers, setTotalPassengers] = useState(0);
-
-    useEffect(() => {
-        setTotalPassengers(adults + minors);
-    }, [adults, minors]);
+    const [passengers, setPassengers] = useAtom(passengersAtom);
 
     return (
         <Popover>
@@ -33,8 +28,8 @@ const PeopleSelect = ({}: PeopleSelectProps) => {
                     )}
                 >
                     <User className="mr-2 h-5 w-5 text-black/40" />
-                    {totalPassengers !== 0
-                        ? `${totalPassengers} Passengers`
+                    {passengers.total !== 0
+                        ? `${passengers.total} Passengers`
                         : "Passengers"}
                 </Button>
             </PopoverTrigger>
@@ -42,13 +37,15 @@ const PeopleSelect = ({}: PeopleSelectProps) => {
                 <div className="flex flex-col gap-4">
                     <IncrementInput
                         label="Adults"
-                        state={adults}
-                        setState={setAdults}
+                        state={passengers}
+                        setState={setPassengers}
+                        stateKey="adults"
                     />
                     <IncrementInput
                         label="Minors"
-                        state={minors}
-                        setState={setMinors}
+                        state={passengers}
+                        setState={setPassengers}
+                        stateKey="minors"
                     />
                 </div>
             </PopoverContent>

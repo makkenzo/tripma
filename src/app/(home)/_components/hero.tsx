@@ -1,11 +1,12 @@
 "use client";
 
+import Loader from "@/components/loader";
 import { Button } from "@/components/ui/button";
 import { airports as mockData } from "@/data/airports";
-import { fromAtom, toAtom } from "@/jotai/store";
+import { fromAtom, passengersAtom, toAtom } from "@/jotai/store";
 import { Iata } from "@/types";
 import { addDays } from "date-fns";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { PlaneLanding, PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -13,7 +14,6 @@ import { DateRange } from "react-day-picker";
 import AirportSelect from "./airport-select";
 import PeopleSelect from "./people-select";
 import TripDatePicker from "./trip-date-picker";
-import Loader from "@/components/loader";
 
 const Hero = () => {
     const [airports, setAirports] = useState<Iata[]>();
@@ -57,6 +57,7 @@ const Hero = () => {
 
     const [from, setFrom] = useAtom(fromAtom);
     const [to, setTo] = useAtom(toAtom);
+    const passengers = useAtomValue(passengersAtom);
 
     const handleSelectFrom = (airport: string) => {
         const found = iataAndNameValues.find(
@@ -76,6 +77,17 @@ const Hero = () => {
         console.log("to", found);
 
         setTo(found!);
+    };
+
+    const handleSubmit = () => {
+        const data = {
+            cityFrom: from,
+            cityTo: to,
+            date: date,
+            passengers: passengers,
+        };
+
+        console.log("🚀 ~ handleSubmit ~ data:", data);
     };
 
     if (isLoading) {
@@ -123,7 +135,12 @@ const Hero = () => {
                         modifier={disabledDateModifier}
                     />
                     <PeopleSelect />
-                    <Button className="rounded-none border-none">Search</Button>
+                    <Button
+                        className="rounded-none border-none"
+                        onClick={handleSubmit}
+                    >
+                        Search
+                    </Button>
                 </div>
             </div>
         </div>

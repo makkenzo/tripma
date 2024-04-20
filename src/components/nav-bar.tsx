@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { Button } from "./ui/button";
-
+import { UserButton, useUser } from "@clerk/nextjs";
 interface NavLinksProps {
     title: string;
     href: string;
@@ -46,19 +46,32 @@ const navLinks: NavLinksProps[] = [
 ];
 
 const Navbar = () => {
+    const { user } = useUser();
+
     return (
         <nav className="flex items-center justify-between">
             <Logo />
-            <ul className="flex my-4">
-                {navLinks.map((link) => (
-                    <li key={link.title}>
-                        <Link href={link.href}>
-                            <Button variant={link.variant} size="lg">
-                                {link.title}
-                            </Button>
-                        </Link>
-                    </li>
-                ))}
+            <ul className="flex my-4 items-center">
+                {navLinks.map((link) => {
+                    if (
+                        user &&
+                        (link.title === "Sign in" || link.title === "Sign up")
+                    ) {
+                        return null;
+                    }
+
+                    return (
+                        <li key={link.title}>
+                            <Link href={link.href}>
+                                <Button variant={link.variant} size="lg">
+                                    {link.title}
+                                </Button>
+                            </Link>
+                        </li>
+                    );
+                })}
+
+                {user && <UserButton afterSignOutUrl="/" />}
             </ul>
         </nav>
     );

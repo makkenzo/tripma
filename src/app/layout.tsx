@@ -1,5 +1,6 @@
 // Import your globals here
 import "@/styles/globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Provider } from "jotai";
 
 import { Inter } from "next/font/google";
@@ -21,7 +22,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Provider>{children}</Provider>
+                <Provider>
+                    <ClerkProvider>{children}</ClerkProvider>
+                </Provider>
             </body>
         </html>
     );

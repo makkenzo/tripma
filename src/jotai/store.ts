@@ -1,4 +1,4 @@
-import { ISubmitData, Iata } from "@/types";
+import { IPassengers, ISubmitData, Iata } from "@/types";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
@@ -18,14 +18,10 @@ export const dateAtom = atom<{
 
 export const roundTripAtom = atom<boolean>(false);
 
-export const passengersAtom = atom<{
-    adults: number;
-    minors: number;
-    total: number;
-}>({
-    adults: 0,
+export const passengersAtom = atomWithStorage<IPassengers>("passengers", {
+    adults: 1,
     minors: 0,
-    total: 0,
+    total: 1,
 });
 
 export const submitDataAtom = atom<ISubmitData>((get) => ({
@@ -41,4 +37,5 @@ if (process.env.NODE_ENV !== "production") {
     toAtom.debugLabel = "to";
     isAlertClosedAtom.debugLabel = "alert closed";
     isCookieAcceptedAtom.debugLabel = "cookie accepted";
+    passengersAtom.debugLabel = "passengers";
 }
