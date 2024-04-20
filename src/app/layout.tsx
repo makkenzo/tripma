@@ -3,10 +3,13 @@ import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Provider } from "jotai";
 
-import { Poppins } from "next/font/google";
+import { Nunito_Sans, Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 
-const font = Poppins({ subsets: ["latin"], weight: ["100", "200"] });
+const font = Nunito_Sans({
+    subsets: ["latin"],
+    weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
     title: "Tripma",
