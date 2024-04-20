@@ -1,16 +1,27 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { deals } from "@/data/deals";
-import Deal from "./deal";
-import { useEffect, useState } from "react";
+import { deals as mockDeals } from "@/data/deals";
 import { IDeal } from "@/types";
+import { useEffect, useState } from "react";
+import Deal from "./deal";
+import Loader from "@/components/loader";
 
 const FlightDeals = () => {
     const [data, setData] = useState<IDeal[]>();
 
     useEffect(() => {
-        setData(deals);
+        const fetchData = async () => {
+            try {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+
+                setData(mockDeals);
+            } catch (error) {
+                console.error("Error fetching flight deals:", error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
@@ -25,7 +36,7 @@ const FlightDeals = () => {
                 </Button>
             </div>
             <div className="flex flex-col gap-8">
-                {data && data.length > 0 && (
+                {data && data.length > 0 ? (
                     <>
                         <div className="flex justify-between">
                             {data.slice(0, 3).map((deal) => (
@@ -34,6 +45,10 @@ const FlightDeals = () => {
                         </div>
                         <Deal deal={data[3]!} fullSize />
                     </>
+                ) : (
+                    <div className="flex justify-center items-center">
+                        <Loader size={40} />
+                    </div>
                 )}
             </div>
         </div>

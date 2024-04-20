@@ -4,10 +4,9 @@ import { reviews } from "@/data/review";
 import { IReview } from "@/types";
 import { useEffect, useState } from "react";
 import Review from "./review";
+import Loader from "@/components/loader";
 
-interface TestimonialsProps {}
-
-const Testimonials = ({}: TestimonialsProps) => {
+const Testimonials = () => {
     const [data, setData] = useState<IReview[]>();
 
     useEffect(() => {
@@ -21,11 +20,15 @@ const Testimonials = ({}: TestimonialsProps) => {
                 saying
             </h1>
             <div className="flex justify-between my-8">
-                {data &&
-                    data.length > 0 &&
+                {data && data.length > 0 ? (
                     data.map((review) => (
                         <Review key={review.id} review={review} />
-                    ))}
+                    ))
+                ) : (
+                    <div className="flex justify-center items-center">
+                        <Loader size={40} />
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { placeCards } from "@/data/placecards";
+import { placeCards as mockPlaces } from "@/data/placecards";
 import { IPlaceCard } from "@/types";
 import { useEffect, useState } from "react";
 import PlaceCard from "./place-card";
+import Loader from "@/components/loader";
 
 interface PlacesToStayProps {}
 
@@ -12,7 +13,17 @@ const PlacesToStay = ({}: PlacesToStayProps) => {
     const [data, setData] = useState<IPlaceCard[]>();
 
     useEffect(() => {
-        setData(placeCards);
+        const fetchData = async () => {
+            try {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+
+                setData(mockPlaces);
+            } catch (error) {
+                console.error("Error fetching flight deals:", error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
@@ -27,11 +38,15 @@ const PlacesToStay = ({}: PlacesToStayProps) => {
                 </Button>
             </div>
 
-            {data && data.length > 0 && (
+            {data && data.length > 0 ? (
                 <div className="flex justify-between">
                     {data.slice(0, 3).map((place) => (
                         <PlaceCard key={place.id} place={place} />
                     ))}
+                </div>
+            ) : (
+                <div className="flex justify-center items-center">
+                    <Loader size={40} />
                 </div>
             )}
 

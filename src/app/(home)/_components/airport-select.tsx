@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { type Iata } from "@/types";
 import { SelectIcon } from "@radix-ui/react-select";
-import { type LucideIcon, PlaneTakeoff } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface AirportSelectProps {

@@ -1,8 +1,11 @@
 "use client";
 
-import { airports } from "@/data/airports";
+import { Button } from "@/components/ui/button";
+import { airports as mockData } from "@/data/airports";
+import { fromAtom, toAtom } from "@/jotai/store";
 import { Iata } from "@/types";
-import { addDays, format } from "date-fns";
+import { addDays } from "date-fns";
+import { useAtom } from "jotai";
 import { PlaneLanding, PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -10,15 +13,34 @@ import { DateRange } from "react-day-picker";
 import AirportSelect from "./airport-select";
 import PeopleSelect from "./people-select";
 import TripDatePicker from "./trip-date-picker";
-import { Button } from "@/components/ui/button";
-import { useAtom } from "jotai";
-import { fromAtom, toAtom } from "@/jotai/store";
+import Loader from "@/components/loader";
 
 const Hero = () => {
-    const iataAndNameValues: Iata[] = airports.map((airport) => ({
-        iata: airport.iata,
-        name: airport.name,
-    }));
+    const [airports, setAirports] = useState<Iata[]>();
+    const [iataAndNameValues, setIataAndNameValues] = useState<Iata[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+
+                setAirports(mockData);
+                setIataAndNameValues(
+                    mockData.map((airport) => ({
+                        iata: airport.iata,
+                        name: airport.name,
+                    })),
+                );
+            } catch (error) {
+                console.error("Error fetching flight deals:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const today = new Date();
 
@@ -55,6 +77,14 @@ const Hero = () => {
 
         setTo(found!);
     };
+
+    if (isLoading) {
+        return (
+            <div className="h-[800px] flex justify-center items-center">
+                <Loader size={40} />
+            </div>
+        );
+    }
 
     return (
         <div className="relative h-[800px]">
