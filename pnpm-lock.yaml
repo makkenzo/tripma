@@ -34,7 +34,7 @@ dependencies:
     version: 1.0.2(@types/react@18.2.79)(react@18.2.0)
   '@t3-oss/env-nextjs':
     specifier: ^0.8.0
-    version: 0.8.0(typescript@5.4.5)(zod@3.22.5)
+    version: 0.8.0(typescript@5.4.5)(zod@3.23.4)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -78,8 +78,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.3)
   zod:
-    specifier: ^3.22.5
-    version: 3.22.5
+    specifier: ^3.23.4
+    version: 3.23.4
 
 devDependencies:
   '@types/eslint':
@@ -1475,7 +1475,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@t3-oss/env-core@0.8.0(typescript@5.4.5)(zod@3.22.5):
+  /@t3-oss/env-core@0.8.0(typescript@5.4.5)(zod@3.23.4):
     resolution: {integrity: sha512-Tc1pg0KH/tJeI0Z1s/Isp1VsGDj1N03ZAYFV8GjWgMxytF/ve0Dv+opjmTapHICRv8qiB1Y/fsTjkWNMpKPRCQ==}
     peerDependencies:
       typescript: '>=5.0.0'
@@ -1485,10 +1485,10 @@ packages:
         optional: true
     dependencies:
       typescript: 5.4.5
-      zod: 3.22.5
+      zod: 3.23.4
     dev: false
 
-  /@t3-oss/env-nextjs@0.8.0(typescript@5.4.5)(zod@3.22.5):
+  /@t3-oss/env-nextjs@0.8.0(typescript@5.4.5)(zod@3.23.4):
     resolution: {integrity: sha512-bJyoE8of4QmqZN7a49iLJAbUq4graScb9ezXzvnuIVr9JP43C093vmy55hT1uZL533CwiPz8zo1INwyAS6qnHw==}
     peerDependencies:
       typescript: '>=5.0.0'
@@ -1497,9 +1497,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@t3-oss/env-core': 0.8.0(typescript@5.4.5)(zod@3.22.5)
+      '@t3-oss/env-core': 0.8.0(typescript@5.4.5)(zod@3.23.4)
       typescript: 5.4.5
-      zod: 3.22.5
+      zod: 3.23.4
     dev: false
 
   /@types/base16@1.0.5:
@@ -5132,6 +5132,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zod@3.22.5:
-    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
+  /zod@3.23.4:
+    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
     dev: false
