@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@clerk/localizations':
-    specifier: ^1.28.3
-    version: 1.28.3(react@18.2.0)
+    specifier: ^2.4.3
+    version: 2.4.3
   '@clerk/nextjs':
     specifier: ^4.30.0
     version: 4.30.0(next@14.2.2)(react-dom@18.2.0)(react@18.2.0)
@@ -235,14 +235,9 @@ packages:
       - react
     dev: false
 
-  /@clerk/localizations@1.28.3(react@18.2.0):
-    resolution: {integrity: sha512-0VhKmDsBcBX2RAgOX5fU2IdZpRP9Zmnm32JeR++GIn6qMD9z4OrPHqSiImtzBzNo7fGllT7qloXC7aL32inEpg==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      react: '>=16'
-    dependencies:
-      '@clerk/types': 3.64.0
-      react: 18.2.0
+  /@clerk/localizations@2.4.3:
+    resolution: {integrity: sha512-ixpzudbb1IKQCgwz35s4PVhT7oOc1wh2A7hFvkV/Crzp4zHynZX8KSvBPL5bFTjhuDJewygzt6GQaSN6FwNy6Q==}
+    engines: {node: '>=18.17.0'}
     dev: false
 
   /@clerk/nextjs@4.30.0(next@14.2.2)(react-dom@18.2.0)(react@18.2.0):
