@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@clerk/localizations':
-    specifier: ^1.28.3
-    version: 1.28.3(react@18.2.0)
+    specifier: ^2.4.5
+    version: 2.4.5
   '@clerk/nextjs':
     specifier: ^4.30.0
     version: 4.30.0(next@14.2.2)(react-dom@18.2.0)(react@18.2.0)
@@ -235,14 +235,11 @@ packages:
       - react
     dev: false
 
-  /@clerk/localizations@1.28.3(react@18.2.0):
-    resolution: {integrity: sha512-0VhKmDsBcBX2RAgOX5fU2IdZpRP9Zmnm32JeR++GIn6qMD9z4OrPHqSiImtzBzNo7fGllT7qloXC7aL32inEpg==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      react: '>=16'
+  /@clerk/localizations@2.4.5:
+    resolution: {integrity: sha512-bwhbok+r4NfUC4fYQTFyCQyt3s5SfbiV3WrdymC3CkCqLWCtL3Lju8D0pG714+Q9VbLCNSGhG0KF5MsRLq/NLg==}
+    engines: {node: '>=18.17.0'}
     dependencies:
-      '@clerk/types': 3.64.0
-      react: 18.2.0
+      '@clerk/types': 4.6.1
     dev: false
 
   /@clerk/nextjs@4.30.0(next@14.2.2)(react-dom@18.2.0)(react@18.2.0):
@@ -282,6 +279,13 @@ packages:
   /@clerk/types@3.64.0:
     resolution: {integrity: sha512-fthhIAXaNIYQZ+82kUA00IUR8fwjewb/9sQI1J1NhoGbLp5rtxjKmNa6EQGKfcSG0svJyQ56kdSUUfawxRm5fw==}
     engines: {node: '>=14'}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
+
+  /@clerk/types@4.6.1:
+    resolution: {integrity: sha512-QFeNKPYDmTJ88l5QYG0SPwbABk42wRMalW3M/wAtr+wnQxBCXyX2XRZe9h4g2rH1VF+wG4Xe56abeeD+xE4iEw==}
+    engines: {node: '>=18.17.0'}
     dependencies:
       csstype: 3.1.1
     dev: false
